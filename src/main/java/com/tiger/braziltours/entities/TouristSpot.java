@@ -17,7 +17,9 @@ public class TouristSpot implements Serializable {
     @Column(unique = true)
     private String name;
 
+    @Column(columnDefinition = "TEXT")
     private String description;
+
     private String imgUrl;
 
     @ManyToOne
