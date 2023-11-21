@@ -37,9 +37,9 @@ public class CityController {
         return ResponseEntity.ok().body(cityDto);
     }
 
-    @GetMapping(value = "/events/{id}")
-    public ResponseEntity<CityDto> findByIdWithEvents(@PathVariable Long id) {
-        CityDto cityDto = cityService.findByIdWithEvents(id);
+    @GetMapping(value = "/touristspots/{id}")
+    public ResponseEntity<CityDto> findByIdWithTouristSpots(@PathVariable Long id) {
+        CityDto cityDto = cityService.findByIdWithTouristSpots(id);
         return ResponseEntity.ok().body(cityDto);
     }
 

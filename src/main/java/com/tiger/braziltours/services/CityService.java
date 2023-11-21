@@ -43,7 +43,7 @@ public class CityService {
     }
 
     @Transactional(readOnly = true)
-    public CityDto findByIdWithEvents(Long id) {
+    public CityDto findByIdWithTouristSpots(Long id) {
         Optional<City> cityOptional = cityRepository.findById(id);
         City city = cityOptional.orElseThrow(()
                 -> new ResourceNotFoundException("O Id = " + id + " nao foi encontrado"));
