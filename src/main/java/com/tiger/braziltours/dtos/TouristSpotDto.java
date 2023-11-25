@@ -1,6 +1,9 @@
 package com.tiger.braziltours.dtos;
 
 import com.tiger.braziltours.entities.TouristSpot;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
 
 import java.io.Serializable;
 
@@ -8,9 +11,19 @@ public class TouristSpotDto implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
+
+    @Size(min = 2, max = 50, message = "Deve ter entre 2 e 50 caracteres")
+    @NotBlank(message = "Campo obrigatório")
     private String name;
+
+    @Size(max = 300)
+    @NotBlank(message = "Campo obrigatório")
     private String description;
+
+    @Size(max = 100)
     private String imgUrl;
+
+    @Positive
     private Long cityId;
 
     public TouristSpotDto() {

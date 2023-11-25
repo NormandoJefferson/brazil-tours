@@ -2,6 +2,7 @@ package com.tiger.braziltours.controllers;
 
 import com.tiger.braziltours.dtos.TouristSpotDto;
 import com.tiger.braziltours.services.TouristSpotService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -38,7 +39,7 @@ public class TouristSpotController {
     }
 
     @PostMapping
-    public ResponseEntity<TouristSpotDto> insert(@RequestBody TouristSpotDto dto) {
+    public ResponseEntity<TouristSpotDto> insert(@Valid @RequestBody TouristSpotDto dto) {
         TouristSpotDto touristSpotDto = touristSpotService.insert(dto);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
@@ -49,7 +50,7 @@ public class TouristSpotController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<TouristSpotDto> update(@PathVariable Long id, @RequestBody TouristSpotDto dto) {
+    public ResponseEntity<TouristSpotDto> update(@Valid @PathVariable Long id, @RequestBody TouristSpotDto dto) {
         TouristSpotDto touristSpotDto = touristSpotService.update(id, dto);
         return ResponseEntity.ok().body(touristSpotDto);
     }
