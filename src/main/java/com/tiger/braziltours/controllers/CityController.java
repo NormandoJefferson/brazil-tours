@@ -1,6 +1,8 @@
 package com.tiger.braziltours.controllers;
 
 import com.tiger.braziltours.dtos.CityDto;
+import com.tiger.braziltours.dtos.CityInsertDto;
+import com.tiger.braziltours.dtos.CityUpdateDto;
 import com.tiger.braziltours.services.CityService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +47,8 @@ public class CityController {
     }
 
     @PostMapping
-    public ResponseEntity<CityDto> insert(@Valid @RequestBody CityDto dto) {
-        CityDto cityDto = cityService.insert(dto);
+    public ResponseEntity<CityDto> insert(@Valid @RequestBody CityInsertDto cityInsertDto) {
+        CityDto cityDto = cityService.insert(cityInsertDto);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
@@ -56,8 +58,8 @@ public class CityController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<CityDto> update(@Valid @PathVariable Long id, @RequestBody CityDto dto) {
-        CityDto cityDto = cityService.update(id, dto);
+    public ResponseEntity<CityDto> update(@PathVariable Long id, @Valid @RequestBody CityUpdateDto cityUpdateDto) {
+        CityDto cityDto = cityService.update(id, cityUpdateDto);
         return ResponseEntity.ok().body(cityDto);
     }
 
